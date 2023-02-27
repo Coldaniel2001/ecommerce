@@ -1,0 +1,33 @@
+.navbar__div--container {   
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(108, 220, 22);
+}
+
+.navbar__img {
+    width: 2rem;
+    height: 2rem;
+}
+
+.logoWilson__img--logo {
+    width: 10rem;
+    height: 5rem;
+}
+
+.navbar__input{
+    width: 12rem;
+    margin-right: 3rem;
+}
+
+
+.logoWilson__img--logo {
+    mix-blend-mode: multiply;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 18rem;
+}
