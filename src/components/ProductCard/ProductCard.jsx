@@ -1,56 +1,28 @@
-import React, {useState} from "react";
-import { Button } from "../Button/Button";
+import React, { useContext } from "react";
+import { ProductContext } from "../../context/ProductContext";
+
+import ItemProduct from "../ItemProduct/ItemProduct";
+import "./ProductCard.css"
 
 export const ProductCard = ({ title, img, description, price }) => {
-    const [amountProducts, setAmountProducts] = useState(0);
-    const addAmountProducts = () => {
-        setAmountProducts(amountProducts + 1);
-    }
-    const removeAmountProducts = () => {
-        if (amountProducts !== 0) {
-            setAmountProducts(amountProducts - 1);
-        }
-    }
+
+
+    const { allElectric } = useContext(ProductContext);
+
+
     return (
-        <>
-            <div>
-                <h2>{title}</h2>
-            </div>
-            <div>
-                <img src={img} alt="imgProduct" />
-            </div>
-            <div>
-                <p>{description}</p>
-            </div>
-            <div>
-                <Button
-                 value={'Add'}
-                 classes={'nada'}
-                 onclick={addAmountProducts}
+        <div className="grid__div--container">
+        {allElectric.map((list) => (
+                <ItemProduct
+                    key={list.id}
+                    title={list.title}
+                    img={list.img}
+                    description={list.description}
+                    price={list.price}
                 />
-                <Button
-                 value={'Remove'}
-                 classes={'nada'}
-                 onclick={removeAmountProducts}
-                />
-                <p>{price}</p>
-                <p>{amountProducts}</p>
-            </div>
-
-
-
-        </>
-
+        ))}
+        </div>
     );
 }
 
-{/* <NavBar />
-    {electricSkates.map((skates) => (
-      <ProductCard
-        key={skates.id}
-        title={skates.title}
-        img={skates.img}
-        description={skates.description}
-        price={skates.price}
-      />
-      ))} */}
+
