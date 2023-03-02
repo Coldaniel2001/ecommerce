@@ -1,0 +1,26 @@
+.create-task__div{
+    margin-top: 1rem;
+    height: 86.5%;
+}
+
+.flex__input {
+    display: flex;
+    justify-content: center;
+}
+
+.task__input--create{
+    background-color: #D9D9D9;
+    outline: none;
+    border: 0;
+    text-align: center;
+    height: 1.5rem;
+    margin-right: 1rem;
+}
+
+.task__button--create{
+    border-radius: 2rem;
+    border:0;
+    background-color: #D9D9D9;
+    width: 3.5rem;
+    height: 1.5rem;
+}

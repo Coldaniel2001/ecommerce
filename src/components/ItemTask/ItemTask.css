@@ -1,0 +1,12 @@
+.list-task__ul--insert{
+    list-style: none;
+}
+
+.flex__li{
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete_images{
+    width: 2rem;
+}

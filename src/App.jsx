@@ -1,17 +1,14 @@
 
 import './App.css';
-import ContainerWishList from './components/ContainerWishList/ContainerWishList';
-import NavBar from './components/NavBar/NavBar';
+import { TaskProvider } from './context/TaskContext';
+import Router from './Routes/Router';
 
 
 function App() {
   return (
-    <>
-    <NavBar />
-    <ContainerWishList>
-      <h1>holaa</h1>
-    </ContainerWishList>
-    </>
+    <TaskProvider>
+      <Router />
+    </TaskProvider>
     
   );
 }
