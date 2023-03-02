@@ -1,5 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
+import Cart from '../components/Cart/Cart';
+import Home from '../components/Home/Home';
 import NavBar from '../components/NavBar/NavBar';
 import { ProductCard } from '../components/ProductCard/ProductCard';
 
@@ -9,9 +11,11 @@ function RouterPaths() {
         <>
             <BrowserRouter>
                 <NavBar />
+                
                 <Routes>
                     <Route path='/products' element={<ProductCard/>}/>
-                    <Route path='/' element={<NavBar/>}/>
+                    <Route path='/' element={<Home/>}/>
+                    <Route path='/cart' element={<Cart/>}/>
                     <Route path='/*' element={<Navigate replace to="/" />}/>
                 </Routes>
             </BrowserRouter>

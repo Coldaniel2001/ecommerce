@@ -17,7 +17,7 @@ export const ProductCard = ({ title, img, description, price }) => {
                 <h2>{title}</h2>
             </div>
             <div>
-                <img src={img} />
+                <img src={img} alt="imgProduct" />
             </div>
             <div>
                 <p>{description}</p>

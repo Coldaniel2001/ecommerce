@@ -1,0 +1,23 @@
+.flex__div--container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-empty__img{
+    width: 10rem;
+    height: 40%;
+}
+
+.message-empty__p{
+    font-size: 4rem;
+    color: gray;
+}
+
+.return-shop__button{
+    background-color: rgb(33, 29, 29);
+    color: white;
+    width: 15rem;
+    height: 6rem;
+}
