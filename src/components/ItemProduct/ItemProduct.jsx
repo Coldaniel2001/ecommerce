@@ -1,17 +1,18 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
+import { ProductContext } from '../../context/ProductContext';
 import { Button } from '../Button/Button';
 
-const ItemProduct = ({ title, img, description, price }) => {
+const ItemProduct = ({ product }) => {
+	const { title, img, description, price } = product;
 
 	const [amountProducts, setAmountProducts] = useState(0);
-	const addAmountProducts = () => {
+	const { cart, setCart } = useContext(ProductContext);
+
+	const addAmountProducts = (hasCart) => {
 		setAmountProducts(amountProducts + 1);
+		setCart([...cart, product]);
 	}
-	const removeAmountProducts = () => {
-		if (amountProducts !== 0) {
-			setAmountProducts(amountProducts - 1);
-		}
-	}
+	
 	return (
 		<div>
 			<div>
@@ -25,14 +26,9 @@ const ItemProduct = ({ title, img, description, price }) => {
 			</div>
 			<div>
 				<Button
-					value={'Add'}
+					value={'Añadir'}
 					classes={'nada'}
 					onclick={addAmountProducts}
-				/>
-				<Button
-					value={'Remove'}
-					classes={'nada'}
-					onclick={removeAmountProducts}
 				/>
 				<p>{price}</p>
 				<p>{amountProducts}</p>

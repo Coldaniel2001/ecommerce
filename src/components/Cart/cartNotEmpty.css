@@ -1,0 +1,27 @@
+
+.title_h1{
+    text-align: center;
+}
+
+.flex-info__div{
+    display: flex;
+    justify-content: space-around ;
+    border: 2px solid rgb(78, 65, 65);
+}
+
+.info__p{
+    color:red;
+}
+
+.flex-products__div{
+    display: flex;
+    justify-content: space-around ;
+    border: 1.1px solid rgb(78, 65, 65);
+}
+
+.content-element-product__div{
+    display: flex;
+    justify-content: center;
+    width: 25%;
+    border: 1.1px solid rgb(78, 65, 65);
+}

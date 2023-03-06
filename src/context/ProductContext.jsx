@@ -5,16 +5,17 @@ import electricSkates from '../db';
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-    const electricList = JSON.parse(localStorage.getItem('electricSkates'));
-    const [allElectric, setAllElectric] = useState(electricList);
+    const cartList = JSON.parse(localStorage.getItem('cart')) || [];
+    const [allElectric, setAllElectric] = useState(electricSkates);
+    const [cart, setCart] = useState(cartList);
 
     useEffect(() => {
-        const electricList = JSON.stringify(electricSkates);
-        localStorage.setItem("electricSkates", electricList)
-    }, [allElectric]);
+        const stringCartList = JSON.stringify(cart);
+        localStorage.setItem("cart", stringCartList);
+    }, [cart]); 
 
     return (
-        <ProductContext.Provider value={{allElectric, setAllElectric}}>
+        <ProductContext.Provider value={{allElectric, setAllElectric, cart, setCart}}>
             {children}
         </ProductContext.Provider>
     )

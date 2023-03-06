@@ -9,18 +9,14 @@ export const ProductCard = ({ title, img, description, price }) => {
 
     const { allElectric } = useContext(ProductContext);
 
-
     return (
         <div className="grid__div--container">
-        {allElectric.map((list) => (
+            {allElectric.map((list) => (
                 <ItemProduct
                     key={list.id}
-                    title={list.title}
-                    img={list.img}
-                    description={list.description}
-                    price={list.price}
+                    product={list}
                 />
-        ))}
+            ))}
         </div>
     );
 }
