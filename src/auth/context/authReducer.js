@@ -12,9 +12,10 @@ const authReducer = (state, action) => {
         case type.logout:
             return{
                 ...state,
-                isLogged:false
+                isLogged:false,
+                user:null
             }
-        default: ;
+        default: return state ;
     }
 }
 

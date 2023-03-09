@@ -1,5 +1,7 @@
-import React, { useRef, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import './Login.css'
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../auth/context/AuthContext';
 
 const Login = () => {
 	const passwordRef = useRef();
@@ -9,6 +11,10 @@ const Login = () => {
 	const [password, setPassword] = useState('');
 	const [emailError, setEmailError] = useState(false);
 	const [passwordError, setPasswordError] = useState(false);
+
+	const {login} = useContext(AuthContext);
+
+	const navigate = useNavigate();
 
 	const handleType = (event) => {
 		if (passwordRef.current.type === 'password') {
@@ -21,23 +27,26 @@ const Login = () => {
 	}
 	const handleEmail = (event) => {
 		setEmail(event.target.value)
-		if(emailError)setEmailError(false);
+		if (emailError) setEmailError(false);
 	}
 
 	const handlePassword = (event) => {
 		setPassword(event.target.value)
-		if(passwordError)setPasswordError(false);
+		if (passwordError) setPasswordError(false);
 	}
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		if (email.toLowerCase() === "danielvillenawilson@gmail.com" && password === "1234") {
-			console.log("respuesta correcta")
-		} 
+			login(email)
+			navigate("/", {
+				replace: true
+			})
+		}
 		if (email.toLowerCase() !== "danielvillenawilson@gmail.com") {
 			setEmailError(true)
-		} 
-		if(password !== "1234"){
+		}
+		if (password !== "1234") {
 			setPasswordError(true)
 		}
 	}
@@ -52,14 +61,14 @@ const Login = () => {
 							<ion-icon name="mail-outline"></ion-icon>
 							<input type="email" value={email} onChange={handleEmail} required />
 							<label >Correo</label>
-							{emailError ? <span>El correo electronico ha sido incorrecto, por favor insertelo de nuevo</span>:""}
+							{emailError ? <span>El correo electronico ha sido incorrecto, por favor insertelo de nuevo</span> : ""}
 						</div>
-						<br/>
+						<br />
 						<div className="input__box">
 							{lock ? <ion-icon name="lock-closed-outline" onClick={handleType}></ion-icon> : <ion-icon name="lock-open-outline" onClick={handleType}></ion-icon>}
 							<input type={showPassword} value={password} onChange={handlePassword} required ref={passwordRef} />
 							<label >Contraseña</label>
-							{passwordError ? <span>La contraseña ha sido incorrecto, por favor insertelo de nuevo</span>: ""}
+							{passwordError ? <span>La contraseña ha sido incorrecto, por favor insertelo de nuevo</span> : ""}
 						</div>
 						<div className="forget">
 							<label ><input type="checkbox" />Recuerdame <span>Olvidar Contraseña</span> </label>

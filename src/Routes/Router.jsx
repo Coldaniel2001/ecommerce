@@ -4,7 +4,6 @@ import AuthProvider from '../auth/context/AuthProvider';
 import Cart from '../components/Cart/Cart';
 import Home from '../components/Home/Home';
 import Login from '../components/Login/Login';
-import NavBar from '../components/NavBar/NavBar';
 import { ProductCard } from '../components/ProductCard/ProductCard';
 import { ProductProvider } from '../context/ProductContext';
 import PrivateRouter from './PrivateRouter';
@@ -22,7 +21,6 @@ function RouterPaths() {
                             <Route path='/*' element={
                                 <PrivateRouter>
                                     <Routes>
-                                    <NavBar />
                                         <Route path='/products' element={<ProductCard />} />
                                         <Route path='/' element={<Home />} />
                                         <Route path='/cart' element={<Cart />} />
