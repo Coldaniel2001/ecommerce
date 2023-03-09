@@ -1,9 +1,15 @@
 .navbar__div--container {   
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     /* background-color: rgb(108, 220, 22); */
     background-color: rgb(19, 129, 148);
+}
+
+.flex__nav{
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
 }
 
 .navbar__img {
@@ -14,11 +20,6 @@
 .logoWilson__img--logo {
     width: 10rem;
     height: 5rem;
-}
-
-.navbar__input{
-    width: 12rem;
-    margin-right: 3rem;
 }
 
 

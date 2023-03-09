@@ -2,3 +2,22 @@
     display: grid;
     grid-template-columns: auto auto auto auto;
 }
+
+.product__div--search{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productSearch__input{
+    width: 25%;
+    margin-right: 1rem;
+    height: 1.5rem;
+    background-color: black;
+    color: white;
+}
+
+.productSearch__img{
+    margin-left: 1rem;
+    width: 2rem;
+}

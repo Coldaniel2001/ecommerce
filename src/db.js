@@ -13,6 +13,7 @@ const electricSkates = [
         img: img_1,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 1",
         price: 600,
+        quantity:1
     },
     {
         id: 2,
@@ -20,6 +21,7 @@ const electricSkates = [
         img: img_2,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 2",
         price: 800,
+        quantity:1
     },
     {
         id: 3,
@@ -27,6 +29,7 @@ const electricSkates = [
         img: img_3,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 3",
         price: 450,
+        quantity:1
     },
     {
         id: 4,
@@ -34,7 +37,7 @@ const electricSkates = [
         img: img_4,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 4",
         price: 580,
-        cart:false
+        quantity:1
     },
     {
         id: 5,
@@ -42,6 +45,7 @@ const electricSkates = [
         img: img_5,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 5",
         price: 1000,
+        quantity:1
     },
     {
         id: 6,
@@ -49,6 +53,7 @@ const electricSkates = [
         img: img_6,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 6",
         price: 300,
+        quantity:1
     },
     {
         id: 7,
@@ -56,6 +61,7 @@ const electricSkates = [
         img: img_7,
         description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 7",
         price: 250,
+        quantity:1
     }
 ]
 
