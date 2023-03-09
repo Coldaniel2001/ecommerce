@@ -4,29 +4,35 @@ import './cartNotEmpty.css'
 
 const CartNotEmpty = () => {
 
-  const { cart, setCart } = useContext(ProductContext);
+  const { cart, setCart, cartTotal, setCartTotal } = useContext(ProductContext);
 
-  const handleDelete = (productId) => {
+  const handleDelete = (productId, productPrice, productQuantity) => {
     const filterDelete = cart.filter((product) => {
       return product.id !== productId
     })
     setCart(filterDelete);
+    setCartTotal(cartTotal-(productPrice*productQuantity));
   }
 
-  const handleOneDelete = (productId) => {
+  const handleOneDelete = (productId, productPrice) => {
     const deleteAll = cart.find(products => {
       return products.id === productId
     })
 
-    return deleteAll.quantity>1
-      ?setCart(cart.map(product =>
+     if(deleteAll.quantity>1){
+      setCart(cart.map(product =>
         product.id === productId
           ? { ...product, quantity: product.quantity - 1 }
           : product
       ))
-      :setCart(cart.filter((product) => {
+      setCartTotal(cartTotal-(productPrice));
+    }else{
+      setCart(cart.filter((product) => {
         return product.id !== productId
       }))
+    }
+      
+      
 
   }
 
@@ -45,8 +51,8 @@ const CartNotEmpty = () => {
             <img src={list.img} alt="img-product" />
             <div>
               <p>{list.title}</p>
-              <button onClick={() => handleDelete(list.id)}>Eliminar Todo</button>
-              <button onClick={() => handleOneDelete(list.id)}>Eliminar</button>
+              <button onClick={() => handleDelete(list.id, list.price, list.quantity)}>Eliminar Todo</button>
+              <button onClick={() => handleOneDelete(list.id, list.price)}>Eliminar</button>
             </div>
           </div>
           <div className='content-element-product__div'>
@@ -58,8 +64,14 @@ const CartNotEmpty = () => {
           <div className='content-element-product__div'>
             <p>{list.price*list.quantity}</p>
           </div>
+          
         </div>
+        
       ))}
+      <div className="content-element-product-result_div">
+        <span className='price-total__span'>Precio total: {cartTotal}</span>
+        <button className='buy__button'>comprar</button>
+      </div>
     </div>
 
 

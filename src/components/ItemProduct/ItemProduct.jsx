@@ -6,10 +6,12 @@ const ItemProduct = ({ product }) => {
 	const { title, img, description, price, id } = product;
 
 	const [amountProducts, setAmountProducts] = useState(0);
-	const { cart, setCart } = useContext(ProductContext);
+	const { cart, setCart, cartTotal, setCartTotal } = useContext(ProductContext);
 
-	const addAmountProducts = (productId) => {
+	const addAmountProducts = (productId, productPrice) => {
 		setAmountProducts(amountProducts + 1);
+		setCartTotal(parseInt(cartTotal+productPrice))
+		
 
 		const cartContainProduct = cart.find(
 			product => product.id === productId
@@ -37,7 +39,7 @@ return (
 			<p>{description}</p>
 		</div>
 		<div>
-			<img src={addCart} alt="addCart" onClick={() => addAmountProducts(id)}/>
+			<img src={addCart} alt="addCart" onClick={() => addAmountProducts(id, price)}/>
 			<p>{price}</p>
 			<p>{amountProducts}</p>
 		</div>
