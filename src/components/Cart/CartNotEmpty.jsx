@@ -30,6 +30,7 @@ const CartNotEmpty = () => {
       setCart(cart.filter((product) => {
         return product.id !== productId
       }))
+      setCartTotal(cartTotal-(productPrice));
     }
       
       
