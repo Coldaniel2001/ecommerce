@@ -15,10 +15,11 @@ const AuthProvider = ({children}) =>{
 
     const [state, dispatch] = useReducer(authReducer, {}, init)
 
-    const login = (email) => {
+    const login = (email,admin=false) => {
         const user = {
             id:1,
-            email
+            email,
+            admin
         }
         localStorage.setItem("user", JSON.stringify(user))
         dispatch({type: type.login, payload: user})

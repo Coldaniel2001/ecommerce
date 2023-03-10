@@ -1,0 +1,60 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "Electric Skate white",
+      "img": "./images/ElectricSkate/ElectricSkateWhite.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 1",
+      "price": 600,
+      "quantity": 1
+    },
+    {
+      "id": 2,
+      "title": "Electric Skate red",
+      "img": "./images/ElectricSkate/ElectricSkateRed.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 2",
+      "price": 800,
+      "quantity": 1
+    },
+    {
+      "id": 3,
+      "title": "Electric Skate blue",
+      "img": "./images/ElectricSkate/ElectricSkateBlue.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 3",
+      "price": 450,
+      "quantity": 1
+    },
+    {
+      "id": 4,
+      "title": "Electric Skate black",
+      "img": "./images/ElectricSkate/ElectricSkateBlack.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 4",
+      "price": 580,
+      "quantity": 1
+    },
+    {
+      "id": 5,
+      "title": "Electric Skate green",
+      "img": "./images/ElectricSkate/ElectricSkateGreen.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 5",
+      "price": 1000,
+      "quantity": 1
+    },
+    {
+      "id": 6,
+      "title": "Electric Skate orange",
+      "img": "./images/ElectricSkate/ElectricSkateOrange.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 6",
+      "price": 300,
+      "quantity": 1
+    },
+    {
+      "id": 7,
+      "title": "Electric Skate pink",
+      "img": "./images/ElectricSkate/ElectricSkatePink.png",
+      "description": "Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum, nemo? 7",
+      "price": 250,
+      "quantity": 1
+    }
+  ]
+}

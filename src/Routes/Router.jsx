@@ -26,6 +26,7 @@ function RouterPaths() {
                                         <Route path='/cart' element={<Cart />} />
                                     </Routes>
                                 </PrivateRouter>
+                                
                             } />
                     </Routes>
                 </BrowserRouter>
