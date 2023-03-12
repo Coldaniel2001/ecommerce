@@ -9,7 +9,9 @@ const init = () =>{
         isLogged:!!user,
         user
     }
+    
 }
+
 
 const AuthProvider = ({children}) =>{
 
@@ -27,6 +29,8 @@ const AuthProvider = ({children}) =>{
 
     const logout = () => {
         localStorage.removeItem("user");
+        localStorage.removeItem("cart");
+        localStorage.removeItem("cartPriceTotal");
         dispatch({type: type.logout})
     }
 

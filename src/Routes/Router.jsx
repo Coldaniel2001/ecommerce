@@ -9,7 +9,10 @@ import { ProductProvider } from '../context/ProductContext';
 import PrivateRouter from './PrivateRouter';
 
 
+
 function RouterPaths() {
+
+
     return (
         <>
             <ProductProvider>
@@ -17,17 +20,21 @@ function RouterPaths() {
                 <BrowserRouter>
                     <Routes>
                         <Route path='/login' element={<Login />}/>
-                        <Route path='/login*' element={<Navigate replace={true} to={("/login")}/>} />
+                        <Route path='/login*' element={<Navigate replace to={("/login")}/>} />
                             <Route path='/*' element={
                                 <PrivateRouter>
                                     <Routes>
                                         <Route path='/products' element={<ProductCard />} />
                                         <Route path='/' element={<Home />} />
                                         <Route path='/cart' element={<Cart />} />
+                                        <Route path='/*' element={<Navigate replace to={("/")}/>}/>
                                     </Routes>
                                 </PrivateRouter>
                                 
+                               
+                                
                             } />
+    
                     </Routes>
                 </BrowserRouter>
                 </AuthProvider>

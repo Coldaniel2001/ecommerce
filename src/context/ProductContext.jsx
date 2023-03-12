@@ -4,7 +4,7 @@ export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
     const cartList = JSON.parse(localStorage.getItem('cart')) || [];
-    const cartPriceTotal = localStorage.getItem('cartPriceTotal') || "";
+    const cartPriceTotal = parseInt(localStorage.getItem('cartPriceTotal')) || 0;
     const [allElectric, setAllElectric] = useState([]);
     const [cart, setCart] = useState(cartList);
     const [cartTotal, setCartTotal] = useState(cartPriceTotal);
@@ -32,7 +32,7 @@ export const ProductProvider = ({ children }) => {
             
         }
         fetchData();
-    },[productsUrl])
+    },[productsUrl, allElectric])
 
     
 

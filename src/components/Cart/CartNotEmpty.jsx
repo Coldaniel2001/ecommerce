@@ -49,7 +49,7 @@ const CartNotEmpty = () => {
       {cart.map((list) => (
         <div className='flex-products__div' key={list.id}>
           <div className='content-element-product__div'>
-            <img src={list.img} alt="img-product" />
+            <img className='img-product__img' src={list.img} alt="img-product" />
             <div>
               <p>{list.title}</p>
               <button onClick={() => handleDelete(list.id, list.price, list.quantity)}>Eliminar Todo</button>
@@ -63,14 +63,14 @@ const CartNotEmpty = () => {
             <p>{list.quantity}</p>
           </div>
           <div className='content-element-product__div'>
-            <p>{list.price*list.quantity}</p>
+            <p>{list.price*list.quantity} €</p>
           </div>
           
         </div>
         
       ))}
       <div className="content-element-product-result_div">
-        <span className='price-total__span'>Precio total: {cartTotal}</span>
+        <span className='price-total__span'>Precio total: {cartTotal} €</span>
         <button className='buy__button'>comprar</button>
       </div>
     </div>
