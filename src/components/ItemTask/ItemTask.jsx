@@ -3,10 +3,10 @@ import TaskContext from '../../context/TaskContext';
 import './ItemTask.css';
 import Delete from '../../images/deleteTask/deleteTask.png';
 
-import {AiFillEdit} from "react-icons/ai"
+import { AiFillEdit } from "react-icons/ai"
 
 
-const ItemTask = ({ list, hasInput = false, hasImg = false, handleDelete }) => {
+const ItemTask = ({ list, hasInput = false, hasImg = false, handleDelete, handleChange }) => {
 
 	const { allTasks, setAllTasks, url } = useContext(TaskContext)
 	const [isChecked, setIsChecked] = useState(false);
@@ -17,22 +17,22 @@ const ItemTask = ({ list, hasInput = false, hasImg = false, handleDelete }) => {
 		})
 
 		if (list.done === true) {
-			fetch(`${url.urlOneTask}${list._id}`, {
+			fetch(`${url.urlupdateDoneTask}${list._id}`, {
 				method: "PUT",
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ done: false })
 			})
-				.then(response=>{
+				.then(response => {
 					const doneTask = { ...list, done: false }
 					setAllTasks([...filterAllTask, doneTask])
 				})
 		} else if (list.done === false) {
-			fetch(`${url.urlOneTask}${list._id}`, {
+			fetch(`${url.urlupdateDoneTask}${list._id}`, {
 				method: "PUT",
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ done: true })
 			})
-				.then(response=>{
+				.then(response => {
 					const doneTask = { ...list, done: true }
 					setAllTasks([...filterAllTask, doneTask])
 				})
@@ -41,14 +41,17 @@ const ItemTask = ({ list, hasInput = false, hasImg = false, handleDelete }) => {
 	}
 
 	return (
-		<ul className='list-task__ul--insert'>
-			<li className='flex__li'>
-				{hasInput && <input type='checkbox' checked={isChecked} onChange={handleOnChange} />}
-				<b>{list.text}</b>
-				{hasImg && <AiFillEdit className='delete_images'/>}
-				{hasImg && <img className='delete_images' src={Delete} onClick={() => handleDelete(list._id)} alt="delete task in the images" />}
-			</li>
-		</ul>
+		<>
+			<ul className='list-task__ul--insert'>
+				<li className='flex__li'>
+					{hasInput && <input type='checkbox' checked={isChecked} onChange={handleOnChange} />}
+					<b>{list.text}</b>
+					<AiFillEdit className='update_images' onClick={() => handleChange(list)} />
+					{hasImg && <img className='delete_images' src={Delete} onClick={() => handleDelete(list._id)} alt="delete task in the images" />}
+				</li>
+			</ul>
+
+		</>
 	);
 };
 

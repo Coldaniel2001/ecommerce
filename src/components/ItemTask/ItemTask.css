@@ -10,3 +10,15 @@
 .delete_images{
     width: 2rem;
 }
+
+.update_images{
+    width: 2rem;
+}
+
+.button__accept--success{
+    background:green
+}
+
+.button__cancel--error{
+    background:red
+}

@@ -7,7 +7,8 @@ export const TaskProvider = ({ children }) => {
     const [allTasks, setAllTasks] = useState([])
     const [url, setUrl] = useState({
         urlAllTask:"http://localhost:4002/todos",
-        urlOneTask:"http://localhost:4002/todos/"
+        urlOneTask:"http://localhost:4002/todos/",
+        urlupdateDoneTask:"http://localhost:4002/todos/done"
     })
 
 
