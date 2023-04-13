@@ -3,23 +3,41 @@ import TaskContext from '../../context/TaskContext';
 import './ItemTask.css';
 import Delete from '../../images/deleteTask/deleteTask.png';
 
-const ItemTask = ({ list, hasInput = false, hasImg = false,handleDelete }) => {
-console.log(handleDelete)
-	const { allTasks, setAllTasks } = useContext(TaskContext)
+import {AiFillEdit} from "react-icons/ai"
 
+
+const ItemTask = ({ list, hasInput = false, hasImg = false, handleDelete }) => {
+
+	const { allTasks, setAllTasks, url } = useContext(TaskContext)
 	const [isChecked, setIsChecked] = useState(false);
 	const handleOnChange = () => {
 		setIsChecked(!isChecked);
 		const filterAllTask = allTasks.filter((task) => {
-			return task.id !== list.id
+			return task._id !== list._id
 		})
+
 		if (list.done === true) {
-			const doneTask = { ...list, done: false }
-			setAllTasks([...filterAllTask, doneTask])
+			fetch(`${url.urlOneTask}${list._id}`, {
+				method: "PUT",
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ done: false })
+			})
+				.then(response=>{
+					const doneTask = { ...list, done: false }
+					setAllTasks([...filterAllTask, doneTask])
+				})
 		} else if (list.done === false) {
-			const doneTask = { ...list, done: true }
-			setAllTasks([...filterAllTask, doneTask])
+			fetch(`${url.urlOneTask}${list._id}`, {
+				method: "PUT",
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({ done: true })
+			})
+				.then(response=>{
+					const doneTask = { ...list, done: true }
+					setAllTasks([...filterAllTask, doneTask])
+				})
 		}
+
 	}
 
 	return (
@@ -27,7 +45,8 @@ console.log(handleDelete)
 			<li className='flex__li'>
 				{hasInput && <input type='checkbox' checked={isChecked} onChange={handleOnChange} />}
 				<b>{list.text}</b>
-				{hasImg && <img className='delete_images' src={Delete}  onClick={()=> handleDelete(list.id)}/>}
+				{hasImg && <AiFillEdit className='delete_images'/>}
+				{hasImg && <img className='delete_images' src={Delete} onClick={() => handleDelete(list._id)} alt="delete task in the images" />}
 			</li>
 		</ul>
 	);

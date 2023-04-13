@@ -5,9 +5,9 @@ import './ListTask.css';
 const ListTask = ({ hasInput, hasImg, status, handleDelete }) => {
 	return (
 		<div className='flex-task__list'>
-			{status.map(list => (
+			{status.map((list) => (
 				<ItemTask
-					key={list.id}
+					key={list._id}
 					list={list}
 					hasInput={hasInput}
 					handleDelete={handleDelete}

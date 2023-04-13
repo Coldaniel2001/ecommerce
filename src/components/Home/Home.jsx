@@ -6,19 +6,30 @@ import ListTask from '../ListTask/ListTask';
 import './Home.css';
 
 const Home = () => {
+	const { allTasks, setAllTasks, url } = useContext(TaskContext)
 
-	const { allTasks, setAllTasks } = useContext(TaskContext)
 	const [task, setTask] = useState("");
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		setAllTasks([...allTasks, {
-			id: Date.now(),
-			text: task,
-			done:false,
-			isEdtiting:false
-		}
-		])
+		fetch(url.urlAllTask, {
+			method: 'POST',
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify({
+				text: task,
+				done: false
+			})
+		})
+			.then(response => response.json())
+			.then(data =>
+			
+				setAllTasks([...allTasks, {
+					_id: data.createTodos._id,
+					text: data.createTodos.text,
+					done: false
+				}]))
 	}
 
 
@@ -27,7 +38,17 @@ const Home = () => {
 	}
 
 	const handleDelete = (taskId) => {
-		setAllTasks(allTasks.filter(task => task.id !== taskId))
+
+		fetch(`${url.urlOneTask}${taskId}`, {
+			method: 'DELETE',
+		})
+			.then(response =>
+				setAllTasks(allTasks.filter((task) => {
+					return task._id !== taskId
+				}))
+
+			)
+
 	}
 
 	return (

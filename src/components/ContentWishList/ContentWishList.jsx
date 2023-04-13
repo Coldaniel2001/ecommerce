@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
-import TaskContext from '../../context/TaskContext';
 import './ContentWishList.css';
 
 const ContentWishList = ({tasks}) => {
-	const { allTasks, setAllTasks } = useContext(TaskContext);
+
 
 	return (
 	<div className='flex__div--status'>
