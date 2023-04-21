@@ -44,10 +44,16 @@ const ItemTask = ({ list, hasInput = false, hasImg = false, handleDelete, handle
 		<>
 			<ul className='list-task__ul--insert'>
 				<li className='flex__li'>
-					{hasInput && <input type='checkbox' checked={isChecked} onChange={handleOnChange} />}
-					<b>{list.text}</b>
-					<AiFillEdit className='update_images' onClick={() => handleChange(list)} />
-					{hasImg && <img className='delete_images' src={Delete} onClick={() => handleDelete(list._id)} alt="delete task in the images" />}
+					{hasInput && <div className='div_flexLi'><input type='checkbox' checked={isChecked} onChange={handleOnChange} /></div>}
+					<div className='div_flexLi'>
+						<b>{list.text}</b>
+					</div>
+					<div className='div_flexLi'>
+						<AiFillEdit className='update_images' onClick={() => handleChange(list)} />
+					</div>
+
+					{hasImg && <div className='div_flexLi'> <img className='delete_images' src={Delete} onClick={() => handleDelete(list._id)} alt="delete task in the images" /></div>}
+
 				</li>
 			</ul>
 

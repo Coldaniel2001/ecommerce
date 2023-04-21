@@ -1,6 +1,8 @@
 .ContainerWishList__div{
 
-
+    display:flex;
+    flex-direction: column;
+    justify-content:space-between;
     margin: auto;
     background-color: #E37E7E;
     width: 50%;

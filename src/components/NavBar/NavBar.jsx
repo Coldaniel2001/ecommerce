@@ -1,9 +1,24 @@
 import React from 'react'
 import './NavBar.css';
 
+import { FiLogOut } from "react-icons/fi";
+import { CgProfile } from "react-icons/cg";
+
 const NavBar = () => {
+
+
   return (
-    <div className='nav-bar__Container'><h1>Wish List</h1></div>
+    <section className='nav-bar__Container'>
+      <div className='nav-bar__flex' >
+        <div className='logout__div'><FiLogOut /></div>
+        <div className='center-wish__div'>
+          <h1>Wish List</h1>
+        </div>
+        <div >
+          <CgProfile />
+        </div>
+      </div>
+    </section>
   )
 }
 
