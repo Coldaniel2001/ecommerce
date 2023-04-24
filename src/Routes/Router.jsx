@@ -11,20 +11,22 @@ import RouterPrivate from './RouterPrivate';
 function Router() {
     return (
         <>
-            <NavBar />
             <BrowserRouter>
                 <Routes>
                     <Route path='/' element={<RouterPrivate>
-                        <Home/>
+                        <NavBar />
+                        <Home />
                     </RouterPrivate>} />
                     <Route path='/active' element={<RouterPrivate>
-                        <Active/>
+                        <NavBar />
+                        <Active />
                     </RouterPrivate>} />
                     <Route path='/completed' element={<RouterPrivate>
-                        <Completed/>
+                        <NavBar />
+                        <Completed />
                     </RouterPrivate>} />
                     <Route path='/login' element={<Login />} />
-                    <Route path='/*' element={<Navigate to="/login"/>} />
+                    <Route path='/*' element={<Navigate to="/login" />} />
                     <Route path='/register' element={<Register />} />
                 </Routes>
             </BrowserRouter>

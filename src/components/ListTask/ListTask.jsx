@@ -4,9 +4,10 @@ import TaskContext from '../../context/TaskContext';
 import './ListTask.css';
 
 const ListTask = ({ hasInput, hasImg, status, handleDelete }) => {
+
 	const [isChange, setIsChange] = useState(false)
 	const [updateInput, setUpdateInput] = useState('')
-	const { url } = useContext(TaskContext)
+	const { url, allTasks, setAllTasks } = useContext(TaskContext)
 
 	const handleChange = (inputTask) => {
 		setIsChange(true)
@@ -17,15 +18,19 @@ const ListTask = ({ hasInput, hasImg, status, handleDelete }) => {
 		setIsChange(false)
 	}
 	const handleAccept = () => {
-		if(updateInput.text!== ""){
+		if (updateInput.text !== "") {
 			setIsChange(false)
 			fetch(`${url.urlOneTask}${updateInput._id}`, {
 				method: 'PUT',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ text: updateInput.text })
 			})
-
-		}else{
+				.then(response => response.json())
+				.then(data => {
+					const filterUpdate = allTasks.filter(list => list._id !== data.todo._id)
+					setAllTasks([...filterUpdate, data.todo])
+				})
+		} else {
 			alert("Error")
 		}
 	}

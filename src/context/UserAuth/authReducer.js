@@ -15,6 +15,12 @@ const authReducer = (state, action) => {
                 isLogged: false,
                 user: null
             }
+        case type.register:
+            return {
+                ...state,
+                isLogged: true,
+                user: action.payload
+            }
         default: return state;
     }
 }

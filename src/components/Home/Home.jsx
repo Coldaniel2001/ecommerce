@@ -3,6 +3,9 @@ import TaskContext from '../../context/TaskContext';
 import ContainerWishList from '../ContainerWishList/ContainerWishList';
 import ContentWishList from '../ContentWishList/ContentWishList';
 import ListTask from '../ListTask/ListTask';
+
+import UserAuthContext from '../../context/UserAuth/UserAuthContext';
+
 import './Home.css';
 
 
@@ -11,9 +14,13 @@ const Home = () => {
 
 	const [task, setTask] = useState("");
 
+	const { user } = useContext(UserAuthContext)
+	
 	const handleSubmit = (e) => {
+
 		e.preventDefault();
-		fetch(url.urlAllTask, {
+
+		fetch(`${url.urlOneTask}${user.id}`, {
 			method: 'POST',
 			headers: {
 				"Content-Type": "application/json",
@@ -25,7 +32,7 @@ const Home = () => {
 		})
 			.then(response => response.json())
 			.then(data =>
-			
+
 				setAllTasks([...allTasks, {
 					_id: data.createTodos._id,
 					text: data.createTodos.text,

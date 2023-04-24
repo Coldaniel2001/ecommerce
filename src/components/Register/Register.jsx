@@ -14,19 +14,17 @@ const Register = () => {
 	const { isLogged } = useContext(UserAuthContext)
 
 	const navigate = useNavigate()
-
+	
+	const { register } = useContext(UserAuthContext)
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		event.target.reset()
-
-		
 		const gmailRepeat= allUsers.find((users)=>{
 			return users.gmail===dataInput.gmail
 		})
 		if (!gmailRepeat) {
 
 			const body = {
-
 				name: dataInput.name,
 				gmail: dataInput.gmail,
 				password: dataInput.password
@@ -39,13 +37,15 @@ const Register = () => {
 				body: JSON.stringify(body)
 			})
 				.then(response => response.json())
-				.then(data =>
+				.then(data =>{
 					setAllUsers([...allUsers, {
 						_id: data.createUsers._id,
 						name: data.createUsers.name,
 						gmail: data.createUsers.gmail,
 						password: data.createUsers.password
-					}]))
+					}])
+					register(data.createUsers)
+				})
 		} else {
 			alert("El gmail ya existe, por favor pon otro gmail")
 		}

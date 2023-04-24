@@ -10,6 +10,7 @@ const ItemTask = ({ list, hasInput = false, hasImg = false, handleDelete, handle
 
 	const { allTasks, setAllTasks, url } = useContext(TaskContext)
 	const [isChecked, setIsChecked] = useState(false);
+
 	const handleOnChange = () => {
 		setIsChecked(!isChecked);
 		const filterAllTask = allTasks.filter((task) => {

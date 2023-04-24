@@ -12,7 +12,7 @@ const Login = () => {
 
 
 
-	const { allUsers } = useContext(UserContext)
+	const { url } = useContext(UserContext)
 	const { dataLogin, setDataLogin, login, isLogged } = useContext(UserAuthContext)
 	const navigate = useNavigate()
 
@@ -24,14 +24,28 @@ const Login = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault();
-		const findOut = allUsers.find((users) => {
-			return users.gmail === dataLogin.gmail && users.password === dataLogin.password
-		})
-
-		if (findOut) {
-			login(findOut)
+		const body = {
+			gmail: dataLogin.gmail,
+			password: dataLogin.password
 		}
-
+		fetch(`${url.urlAllUser}/login`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(body)
+		})
+			.then(response => response.json())
+			.then(data => {
+				if (data.status === 'OK') {
+					login(data.user)
+				}
+				if (data.status === 'NOT FOUND') {
+					alert('User not found')
+				}
+			
+			}
+			)
 	}
 
 	const handleInput = (event) => {

@@ -33,11 +33,21 @@ const UserAuthProvider = ({ children }) => {
 
     const logout = (email) => {
         localStorage.removeItem("user")
+        localStorage.removeItem("userId")
         dispatch({ type: type.logout })
     }
 
+    const register = (users) => {
+        const user = {
+            id: users._id,
+            gmail: users.gmail,
+        }
+        localStorage.setItem("user", JSON.stringify(user))
+        dispatch({ type: type.register, payload: user })
+    }
+
     return (
-        <UserAuthContext.Provider value={{ ...state, dataLogin, setDataLogin, login: login, logout: logout }}>
+        <UserAuthContext.Provider value={{ ...state, dataLogin, setDataLogin, login: login, logout: logout, register:register }}>
             {children}
         </UserAuthContext.Provider>
     )
