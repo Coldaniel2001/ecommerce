@@ -43,7 +43,6 @@ const Login = () => {
 				if (data.status === 'NOT FOUND') {
 					alert('User not found')
 				}
-			
 			}
 			)
 	}

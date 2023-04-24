@@ -15,7 +15,7 @@ const Home = () => {
 	const [task, setTask] = useState("");
 
 	const { user } = useContext(UserAuthContext)
-	
+
 	const handleSubmit = (e) => {
 
 		e.preventDefault();
@@ -49,13 +49,15 @@ const Home = () => {
 
 		fetch(`${url.urlOneTask}${taskId}`, {
 			method: 'DELETE',
+			headers: { 'Content-Type': 'application/json' },
+			body: JSON.stringify({userId:user.id})
 		})
 			.then(response =>
 				setAllTasks(allTasks.filter((task) => {
 					return task._id !== taskId
 				}))
-
 			)
+
 
 	}
 
